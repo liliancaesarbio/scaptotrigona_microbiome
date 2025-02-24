@@ -33,5 +33,7 @@ External databases: NCBI nr database (version November 10/11/2023)
 
 # Microbiome and MAG-Encoded Functions
 Contains scripts and commands for coding sequence predictions, recovery of region-specific coverage, and functional enrichment analyses.
+
 Software includes: Prokka, eggnog-mapper, DRAM, R
+
 External databases: eggNOG DB v.5.0.2

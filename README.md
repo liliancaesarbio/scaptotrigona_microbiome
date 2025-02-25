@@ -5,33 +5,33 @@ By following this pipeline, you should be able to reproduce our results or apply
 
 The pipeline is organized following the methods section of the manuscript:
 
-# Amplicon Data and Statistical Analyses
+# Folder: Amplicon Data and Statistical Analyses
 Contains inputs, scripts, and commands for 16S amplicon sequencing, ITS amplicon analyses, and statistical analyses on alpha and beta diversity.
 
 Software includes: R, DADA2, Vegan
 
 External databases: SILVA v.138.1 (silva_nr99_v138.1_train_set.fa and silva_species_assignment_v138.1.fa) and UNITE v.9 (sh_general_release_dynamic_25.07.2023)
 
-# Metagenome Assembly and Binning
+# Folder: Metagenome Assembly and Binning
 Contains scripts and commands for metagenome assembly, coverage mapping, and binning.
 
 Software includes: metaSPAdes, Bowtie2, Metabat, checkM, dRep, Samtools
 
 External databases: SILVA SSU database v.138.1 (2,224,740 SSU rRNA sequences) and fungi_odb10 (2024-01-08, 549 genomes, 758 BUSCOs)
 
-# Strain Diversity in Metagenome-Assembled Genomes (MAGs)
+# Folder: Strain Diversity in Metagenome-Assembled Genomes (MAGs)
 Contains scripts and commands for strain diversity prediction.
 
 Software: InStrain
 
-# Phylogenetic Placement of MAGs and Isolated Strains
+# Folder: Phylogenetic Placement of MAGs and Isolated Strains
 Contains scripts and commands for maximum likelihood phylogenetic inference.
 
 Software includes: BLAST+, OrthoFinder, MAFFT, IQ-TREE
 
 External databases: NCBI nr database (version November 10/11/2023)
 
-# Microbiome and MAG-Encoded Functions
+# Folder: Microbiome and MAG-Encoded Functions
 Contains scripts and commands for coding sequence predictions, recovery of region-specific coverage, and functional enrichment analyses.
 
 Software includes: Prokka, eggnog-mapper, DRAM, R

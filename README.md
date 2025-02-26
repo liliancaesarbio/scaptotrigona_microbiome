@@ -1,9 +1,9 @@
 # Manuscript: Spatial segregation and cross-domain interactions drive stingless bee hive microbiome assembly
 Here, you will find the scripts and commands used to analyze the Scaptotrigona microbiome data—although flags and details regarding commands/analyses are also provided in the manuscript methods section. The pipeline includes both amplicon sequencing (16S and ITS) and shotgun sequencing. While ASVs, count tables, and taxonomic classifications are available as supplementary material in the manuscript, raw shotgun sequencing data can be accessed in the NCBI Sequence Read Archive (SRA) under Project ID PRJNA1216660.
 
-By following this pipeline, you should be able to reproduce our results or apply the analyses to other datasets for comparison. Note that file names or directory paths should be adjusted accordingly, which is highlighted in the pipeline as comments.
+By following this pipeline, you should be able to reproduce our results or apply the analyses to other datasets for comparison. Note that file names or directory paths should be adjusted accordingly, and many steps involve installing software and databases.
 
-The pipeline is organized following the methods section of the manuscript:
+The code information is organized following the methods section of the manuscript:
 
 # Folder: Amplicon Data and Statistical Analyses
 Contains inputs, scripts, and commands for 16S amplicon sequencing, ITS amplicon analyses, and statistical analyses on alpha and beta diversity.

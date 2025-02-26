@@ -37,3 +37,5 @@ Contains scripts and commands for coding sequence predictions, recovery of regio
 Software includes: Prokka, eggnog-mapper, DRAM, R
 
 External databases: eggNOG DB v.5.0.2
+
+# Feels free to contact me with questions: liliancaesarbio@gmail.com or lcaesar@iu.edu

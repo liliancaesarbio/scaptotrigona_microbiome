@@ -1,0 +1,56 @@
+#### HERE YOU WILL FIND AND OVERVIEW OF COMMANDS USED. CUSTUM SCRIPTS ARE IN INDIVIDUAL FILES IN THIS SAME FOLDER.
+
+
+# change name of the .faa file
+chage_faa_name.sh
+
+for i in enterobacteria/GC*; do bash chage_faa_name.sh ${i}; done
+
+
+# edit header to add the name of the genome to it
+for i in *.faa; do bash ../edit_headers.sh ${i} ${i}.fasta; done
+
+# run orthofinder
+orthofinder -t 24 -f prots -a 24
+
+# install mafft
+micromamba create -n mafft_env python=3.9 -y
+micromamba activate mafft_env
+micromamba install -c bioconda mafft
+
+#Orthogroups folder to get a list of all group with 80% genomes having a representative
+# delete total column first (in its folder), then run script on a tab delimited file
+bash orgr_80perc.sh /path/Orthogroups.GeneCountok.csv 80perc_singl_orthol.txt
+
+# get the sequences to be aligned, now in folder fastas
+while read id; do
+    id=$(echo $id | tr -d '"')  # Removes quotes from the ID
+    if [ -f /path/${id}.fa ]; then
+        cp /path/${id}.fa .
+    else
+        echo "File ${id}.fa not found."
+    fi
+done < 80perc_singl_orthol.txt
+
+
+# align with MAFFT
+for f in *.fa; do mafft --globalpair --maxiterate 1000 ${f} > ${f}_align.fasta; done
+
+
+# trim aligned edited fasta files
+for f in *align.fasta; do trimal -automated1 -in ${f} -out ${f}trim.fasta; done
+
+# add missing lines with the name of the genomes
+#manually make a list of genomes
+/N/project/NewtonLab/lilian/scaptotrigona_metag_2022/2024/08_phylogenies/phylo_allbins/list_genomes
+
+for i in *trim.fasta; do python ../complete_fasta_alignements.py ../list_genomes ${i} ${i}ok.fasta; done
+
+# concatenate
+python ../concat_multialign.py concatenated_alignament.fasta *ok.fasta
+
+# check the size of each concat sequence
+awk '/^>/ {if (seq) print length(seq); seq=""} !/^>/ {seq = seq $0} END {if (seq) print length(seq)}' concatenated_alignament.fasta
+
+# ML phylogenetic
+iqtree2 -s list_genomes_final.fasta --prefix concat -m TEST -bb 1000 -T 24

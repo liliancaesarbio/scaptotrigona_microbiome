@@ -1,9 +1,10 @@
-# Manuscript: Spatial segregation and cross-domain interactions drive stingless bee hive microbiome assembly
-Here, you will find the scripts and commands used to analyze the Scaptotrigona microbiome data—although flags and details regarding commands/analyses are also provided in the manuscript methods section. The pipeline includes both amplicon sequencing (16S and ITS) and shotgun sequencing. While ASVs, count tables, and taxonomic classifications are available as supplementary material in the manuscript, raw shotgun sequencing data can be accessed in the NCBI Sequence Read Archive (SRA) under Project ID PRJNA1216660.
+# Manuscript: Spatial Segregation and Cross-Domain Interactions Drive Stingless Bee Hive Microbiome Assembly
 
-By following this pipeline, you should be able to reproduce our results or apply the analyses to other datasets for comparison. Note that file names or directory paths should be adjusted accordingly, and many steps involve installing software and databases.
+This repository contains scripts and commands used to analyze Scaptotrigona microbiome data. Full details on commands and analyses, sufficient for reproducibility, are also provided in the manuscript’s methods section.
 
-The code information is organized following the methods section of the manuscript:
+The code is organized according to the manuscript’s sections, covering amplicon sequencing (16S and ITS) and shotgun sequencing. ASVs, count tables, and taxonomic classifications are included as supplementary material, while raw shotgun sequencing data is available in the NCBI Sequence Read Archive (SRA) under Project ID PRJNA1216660.
+
+To use these scripts and commands, adjust file names, input structures, and directory paths as needed. Most analyses also require installing specific software and databases, as specified below.
 
 # Folder: Amplicon Data and Statistical Analyses
 Contains inputs, scripts, and commands for 16S amplicon sequencing, ITS amplicon analyses, and statistical analyses on alpha and beta diversity.

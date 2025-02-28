@@ -1,10 +1,10 @@
 # Manuscript: Spatial Segregation and Cross-Domain Interactions Drive Stingless Bee Hive Microbiome Assembly
 
-This repository contains scripts and commands used to analyze Scaptotrigona microbiome data. Full details on commands and analyses, sufficient for reproducibility, are also provided in the manuscript’s methods section.
+This repository contains in-house-made scripts used for analyzing Scaptotrigona microbiome data. Full details on commands and analyses, sufficient for reproducibility, are provided in the manuscript’s methods section.
 
-The code is organized according to the manuscript’s sections, covering amplicon sequencing (16S and ITS) and shotgun sequencing. ASVs, count tables, and taxonomic classifications are included as supplementary material, while raw shotgun sequencing data is available in the NCBI Sequence Read Archive (SRA) under Project ID PRJNA1216660.
+Scripts used in each manuscript section are provided accordingly, covering amplicon sequencing (16S and ITS) and shotgun sequencing. To use these scripts/commands, adjust file names, input structures, and directory paths as needed. Most analyses also require installing specific software and databases, as specified below.
 
-To use these scripts and commands, adjust file names, input structures, and directory paths as needed. Most analyses also require installing specific software and databases, as specified below.
+ASVs, count tables, and taxonomic classifications are included as supplementary material, while raw shotgun sequencing data is available in the NCBI Sequence Read Archive (SRA) under Project ID PRJNA1216660.
 
 # Folder: Amplicon Data and Statistical Analyses
 Contains inputs, scripts, and commands for 16S amplicon sequencing, ITS amplicon analyses, and statistical analyses on alpha and beta diversity.
@@ -14,26 +14,26 @@ Software includes: R, DADA2, Vegan
 External databases: SILVA v.138.1 (silva_nr99_v138.1_train_set.fa and silva_species_assignment_v138.1.fa) and UNITE v.9 (sh_general_release_dynamic_25.07.2023)
 
 # Folder: Metagenome Assembly and Binning
-Contains scripts and commands for metagenome assembly, coverage mapping, and binning.
+Contains scripts and commands used while running metagenome assembly, coverage mapping, and binning.
 
 Software includes: metaSPAdes, Bowtie2, Metabat, checkM, dRep, Samtools
 
 External databases: SILVA SSU database v.138.1 (2,224,740 SSU rRNA sequences) and fungi_odb10 (2024-01-08, 549 genomes, 758 BUSCOs)
 
 # Folder: Strain Diversity in Metagenome-Assembled Genomes (MAGs)
-Contains scripts and commands for strain diversity prediction.
+Contains scripts and commands used while running for strain diversity prediction.
 
 Software: InStrain
 
 # Folder: Phylogenetic Placement of MAGs and Isolated Strains
-Contains scripts and commands for maximum likelihood phylogenetic inference.
+Contains scripts and commands used to run maximum likelihood phylogenetic inferences.
 
 Software includes: BLAST+, OrthoFinder, MAFFT, IQ-TREE
 
 External databases: NCBI nr database (version November 10/11/2023)
 
 # Folder: Microbiome and MAG-Encoded Functions
-Contains scripts and commands for coding sequence predictions, recovery of region-specific coverage, and functional enrichment analyses.
+Contains scripts and commands related to coding sequence predictions, recovery of region-specific coverage, and functional enrichment analyses.
 
 Software includes: Prokka, eggnog-mapper, DRAM, R
 

@@ -1,1 +1,7 @@
+Code/script files:
 
+16S.r = code for 16S amplicon analyses in R with DADA2
+
+ITS.r = code for ITS amplicon analyses in R with DADA2
+
+Stats_plots.r = code for statistical analyses with amplicon data counts

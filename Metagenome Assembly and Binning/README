@@ -1,1 +1,7 @@
+Custom code/script files:
 
+General_commands.txt = code used to run each script
+
+get_contigs_lenght.pl = perl script to recover only contigs of a certain lenght from a multifasta
+
+get_seqs_from_lis.py = python code to recover having names provided in a list

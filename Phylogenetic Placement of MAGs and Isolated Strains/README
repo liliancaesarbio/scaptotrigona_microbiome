@@ -1,1 +1,44 @@
-General_commands.txt = function of each script and command used to run it
+## script: orgr_80per.sh
+## usage: bash orgr_80perc.sh /path/Orthogroups.GeneCountok.csv 80perc_singl_orthol.txt
+bash orgr_80perc.sh input1.txt output.txt
+
+# structure input1 (i.e. OrthoFinder Orthogroups.GeneCountok.csv output)
+"Orthogroup"    "NC_003197.2_Salmonella_enterica.faa"   "NC_007481.1_Pseudoalteromonas_translucida.faa" "NC_007795.1_Staphylococcus_aureus.faa" "NC_008618.1_Bifidobacterium_adolescentis.faa"  "NC_008783.1_Bartonella_bacilliformis.faa"      "NC_009655.1_Actinobacillus_succinogenes.faa"   "NC_009828.1_Pseudothermotoga_lettingae.faa"    "NC_009850.1_Aliarcobacter_butzleri.faa"        "NC_010161.1_Bartonella_tribocorum.faa" "NC_010694.1_Erwinia_tasmaniensis.faa"
+
+
+
+
+## terminal script using the output from the script above to get orthologs (note: change path)
+while read id; do
+    id=$(echo $id | tr -d '"')  # Removes quotes from the ID
+    if [ -f /path/OrthoFinder/*/Orthogroup_Sequences/${id}.fa ]; then
+        cp /path/OrthoFinder/*/Orthogroup_Sequences/${id}.fa .
+    else
+        echo "File ${id}.fa not found."
+    fi
+done < output.txt
+
+
+
+
+
+## script: complete_fasta_alignements.py
+## usage: python complete_fasta_alignements.py input1 input2.fasta output.fasta
+
+# structure input1 (i.e. list_genomes_final provided here in this folder:
+seq1
+seq2
+
+# structure input2 (i.e. alignment file:
+>seq1
+ATGC--
+>seq2
+ATGCGT
+
+
+
+
+
+## script: concat_multialign.py
+## usage: python concat_multialign.py output.fasta *inputs.fasta 
+#run inside folder with all ortholog alignment fasta files (*inputs.fasta)

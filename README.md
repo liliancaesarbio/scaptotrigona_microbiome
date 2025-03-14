@@ -4,7 +4,7 @@ This repository contains all previously unreported custom computer code used to 
 
 Custom scripts used in each manuscript section are provided accordingly, covering amplicon sequencing (16S and ITS) and shotgun sequencing. To use these scripts/commands, adjust file names and directory paths as needed. Most analyses also require installing specific software and databases, as specified below.
 
-ASVs, count tables, and taxonomic classifications are included as supplementary material with the manuscript, while raw shotgun sequencing data is available in the NCBI Sequence Read Archive (SRA) under Project ID PRJNA1216660.
+ASVs, count tables, and taxonomic classifications are included as supplementary material with the manuscript, while raw shotgun sequencing data is available in the NCBI Sequence Read Archive (SRA) under Project ID PRJNA1216660. Metagenome-assembled genomes (MAGs) can be found in: scaptotrigona_microbiome/Metagenome Assembly and Binning/MAGs/
 
 # Folder: Amplicon Data and Statistical Analyses
 Contains inputs, scripts, and commands for 16S amplicon sequencing, ITS amplicon analyses, and statistical analyses on alpha and beta diversity.

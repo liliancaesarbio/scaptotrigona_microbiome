@@ -1,4 +1,4 @@
-Custom code/script files:
+## Custom code/script files for amplicon data analyses:
 
 16S.r = code for 16S amplicon analyses in R with DADA2
 

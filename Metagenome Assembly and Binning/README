@@ -1,1 +1,44 @@
-General_commands.txt = function of each script and command used to run it
+### USAGE OF SCRIPTS
+
+## script: taxa_silva.sh
+## usage: bash taxa_silva.sh inout1 input2 ouput.csv
+
+#structure input1 (i.e. samtools idxstats output)
+BD359735.3.2145 2143    0       0
+HL196872.5744.7271      1528    0       0
+AY855839.1.1390 1390    0       0
+FW343016.1.1511 1511    0       0
+AY835431.189876.191345  1470    0       0
+FW369114.1.1462 1462    0       0
+AY846372.1.1779 1779    0       0
+FW369795.1.1413 1413    0       0
+
+##structure input2 (i.e. SILVA_138.1_SSURef_tax_silvaDNA_TAXONOMY_OK.txt)
+BD359735.3.2145 Eukaryota;SAR;Alveolata;Apicomplexa;Aconoidasida;Haemosporoidia;Plasmodium;Plasmodium malariae
+HL196872.5744.7271 Eukaryota;SAR;Stramenopiles;Labyrinthulomycetes;Thraustochytriaceae;Thraustochytrium;unidentified
+AY855839.1.1390 Bacteria;Proteobacteria;Alphaproteobacteria;Rickettsiales;Mitochondria;Maytenus hookeri
+
+
+
+## script: get_contigs_lenght.pl (eg. >300 length selection)
+## usage: perl get_contigs_lenght.pl 300 input.fasta > contigs300cut.fasta
+
+#structure input1 (i.e. multifasta file)
+
+
+
+## script: get_seqs_from_list.py
+## usage: python get_seqs_from_list.py input1.fasta input2.txt
+
+#structure input1 (i.e. multifasta file)
+>NODE1
+AAAAAA
+>NODE2
+GGGGGGGGG
+>NODE3
+TTTTTTT
+
+#structure input2 (i.e. ID list)
+NODE1
+NODE3
+

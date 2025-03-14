@@ -9,24 +9,28 @@ ASVs, count tables, and taxonomic classifications are included as supplementary 
 # Folder: Amplicon Data and Statistical Analyses
 Contains inputs, scripts, and commands for 16S amplicon sequencing, ITS amplicon analyses, and statistical analyses on alpha and beta diversity.
 
-Software includes: R, DADA2, Vegan
+Software required to run code/scripts: R, DADA2 
 
 External databases: SILVA v.138.1 (silva_nr99_v138.1_train_set.fa and silva_species_assignment_v138.1.fa) and UNITE v.9 (sh_general_release_dynamic_25.07.2023)
 
 # Folder: Metagenome Assembly and Binning
-Contains custom scripts used while running metagenome assembly, coverage mapping, and binning.
+Contains custom scripts related to running metagenome assembly, coverage mapping, and binning.
 
-Software used in this section includes: metaSPAdes, Bowtie2, Metabat, checkM, dRep, Samtools
+Interpreters required to run code/scripts: Bash, Python, Perl
+
+Other software used in this section includes: metaSPAdes, Bowtie2, Metabat, checkM, dRep, Samtools
 
 External databases: SILVA SSU database v.138.1 (2,224,740 SSU rRNA sequences) and fungi_odb10 (2024-01-08, 549 genomes, 758 BUSCOs)
 
 # Folder: Strain Diversity in Metagenome-Assembled Genomes (MAGs)
-Contains custom scripts used while running for strain diversity prediction.
+Contains intermediate files from strain diversity prediction.
 
 Software used in this section: InStrain
 
 # Folder: Phylogenetic Placement of MAGs and Isolated Strains
-Contains custom scripts used while running maximum likelihood phylogenetic inferences.
+Contains custom scripts related to maximum likelihood phylogenetic inferences.
+
+Interpreters required to run code/scripts: Bash, Python
 
 Software used in this section includes: BLAST+, OrthoFinder, MAFFT, IQ-TREE
 
@@ -35,7 +39,9 @@ External databases: NCBI nr database (version November 10/11/2023)
 # Folder: Microbiome and MAG-Encoded Functions
 Contains custom scripts used for coding sequence predictions, recovery of region-specific coverage, and functional enrichment analyses.
 
-Software used in this section includes: Prokka, eggnog-mapper, DRAM, R
+Interpreters required to run code/scripts: Bash, Python
+
+Other software used in this section includes: Prokka, eggnog-mapper, DRAM
 
 External databases: eggNOG DB v.5.0.2
 

@@ -1,3 +1,5 @@
+### USAGE OF SCRIPTS
+
 ## script: orgr_80per.sh
 ## usage: bash orgr_80perc.sh /path/Orthogroups.GeneCountok.csv 80perc_singl_orthol.txt
 bash orgr_80perc.sh input1.txt output.txt

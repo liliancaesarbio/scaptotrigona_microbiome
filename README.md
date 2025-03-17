@@ -1,6 +1,6 @@
 # Manuscript: Spatial Segregation and Cross-Domain Interactions Drive Stingless Bee Hive Microbiome Assembly
 
-This repository contains all previously unreported custom computer code used to generate results reported in stingless bee microbiome manuscript. Full details on commands and analyses, sufficient for reproducibility, are also provided in the manuscript’s methods section.
+This repository contains all previously unreported custom computer code used to generate results reported in this stingless bee microbiome manuscript. Full details on commands and analyses, sufficient for reproducibility, are also provided in the manuscript’s methods section.
 
 Custom scripts used in each manuscript section are provided accordingly, covering amplicon sequencing (16S and ITS) and shotgun sequencing. To use these scripts/commands, adjust file names and directory paths as needed. Most analyses also require installing specific software and databases, as specified below.
 

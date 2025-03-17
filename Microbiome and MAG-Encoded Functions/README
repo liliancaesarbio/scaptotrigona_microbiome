@@ -1,1 +1,301 @@
-General_commands.txt = function of each script and command used to run it
+
+
+
+
+## recover taxa from diamond blastp result
+## script: ann_taxa.py
+## usage: python ann_taxa.py input1 output
+
+# structure input1 (i.e. diamond blastp output)
+FBKMMLCL_00020  WP_066916299.1  40.9    237     130     4       5       240     2       229     3.48e-51	178
+
+
+
+## get consensus taxa for protein
+## script: taxa_contig.py
+## usage: python taxa_contig.py input1 input2 output
+
+# structure input1 (i.e. gff file with predicted proteins by contig)
+NODE_3  Prodigal:002006 CDS     34930   35112   .       +       0       ID=BJCDHPDN_00515;inference=ab initio prediction:Prodigal:002006;locus_tag=BJCDHPDN_00515;product=hypothetical protein
+
+# structure input2 (i.e. output from the previous script)
+HKFPKENM_00001  WP_056980192.1  61.9    386     146     1       1       385     1       386     9.08e-169	488     cellular organisms; Bacteria; Bacillati; Bacillota; Bacilli; Lactobacillales; Lactobacillaceae; Lentilactobacillus; Lentilactobacillus parafarraginis
+
+
+
+## get consensus taxa for contigs, based on all proteins
+## script: classify_node.py
+## usage: python classify_node.py input1 > output
+
+# structure input1 (i.e. output from the previous script)
+Contig  GeneID  Classification
+NODE_1  BJCDHPDN_00001  Other
+NODE_1  BJCDHPDN_00002  Other
+NODE_1  BJCDHPDN_00003  Other
+NODE_1  BJCDHPDN_00004  Other
+NODE_1  BJCDHPDN_00005  Other
+
+
+## prepare list with consensus taxa per config
+## script: make_list_contigs_per_taxa.py
+## usage: python make_list_contigs_per_taxa.py input1
+
+# structure input1 (i.e. output from the previous script)
+Contig  Consensus_Classification
+NODE_1  Bacteria
+NODE_2  Bacteria
+NODE_3  Bacteria
+NODE_4  Bacteria
+NODE_5  Bacteria
+
+
+## command to get a list of proteins from each bacterial contig per sample
+#!/bin/bash
+for sample in ${sample[*]}; do
+	grep -F -w -f ${sample}_input1 ${sample}input2.gff | grep -E '^\b' > ${sample}_lines
+	awk -F 'ID=|;' '{print $2}' ${sample}_lines > ${sample}_output
+done
+
+# structure input1 (i.e. list of bacteria contigs)
+NODE_4667
+NODE_7434
+NODE_9176
+NODE_11725
+NODE_16852
+NODE_17162
+NODE_19770
+
+# structure input2 (i.e. off)
+NODE_3  Prodigal:002006 CDS     34930   35112   .       +       0       ID=BJCDHPDN_00515;inference=ab initio prediction:Prodigal:002006;locus_tag=BJCDHPDN_00515;product=hypothetical protein
+
+
+
+## get the bacteria fastas for each sample
+## script: get_seqs_from_list.py
+## usage: python get_seqs_from_list.py input1.faa output.fasta
+
+# structure input 1 (i.e. protein fasta)
+>FBKMMLCL_00001 hypothetical protein
+MSFFKRLIHRQDICPPKTKLDPKQKLMLEAFTSKQIDLIDKLEHVKNLKIDIDYEGSIVY
+LKYLGWTGDLSLGKTREFTNIGKPELNTDLCCSFLPTPLRIKVPFTRYQEKVAHQKGLNK
+LAVLKRHGKMIKRMKQDNQKFINERKSK
+>FBKMMLCL_00002 hypothetical protein
+MNHSKDVYQAIKDDQYNTLRIAKEVEDIKNQDNRRWNNLNQTITALCTETHNFITQSGGP
+KQKTKDEEKITGTKVGSLLGSRIKKIEYQVRERLSKKMQSNIDNVSKKLNTQPWLKVYLN
+YICQMLIADKHNHILASIDPRETYVRVYDNLISYAIHATIFANNHKYPTGVVIRGGLAI
+
+
+
+## coverage by gene
+## script: cov_gene.py
+## usage: python cov_gene.py -verbose input1 input2 > cov_by_gene_${sample}
+
+# structure input1
+NODE_12 DNJANLEF_01194 39 689
+NODE_12 DNJANLEF_01195 689 1333
+NODE_12 DNJANLEF_01196 1430 1615
+NODE_12 DNJANLEF_01197 1792 2178
+
+# structure input2
+NODE_1_length_277471_cov_26.142735      1       3
+NODE_1_length_277471_cov_26.142735      2       3
+NODE_1_length_277471_cov_26.142735      3       3
+NODE_1_length_277471_cov_26.142735      4       3
+NODE_1_length_277471_cov_26.142735      5       3
+NODE_1_length_277471_cov_26.142735      6       4
+
+
+
+## calculate normalized coverage by gene
+## script: rpm_genes.sh
+## usage: rpm_genes.sh input1 output
+
+Input1 (i.e. output from previous script)
+9.32800 NODE_10058      642     1016    BJCDHPDN_166172
+8.72559 NODE_10058      1404    1997    BJCDHPDN_166173
+8.16296 NODE_10058      2068    2472    BJCDHPDN_166174
+
+
+
+
+## classify KO according BRITE
+## script: class_BRITE_ko.py
+## usage: python class_BRITE_ko.py input1 output
+for sample in ${sample[*]}; do
+	python /path/class_BRITE_ko.py ../output_eggnog_${sample}.emapper.annotations_kook_byline output_${sample}_BRITE
+done
+
+# structure input1 (i.e emapper output with one KO per line)
+FBKMMLCL_00020  K03811
+FBKMMLCL_00028  -
+FBKMMLCL_00032  -
+FBKMMLCL_00033  K03530
+
+
+
+
+## organize BRITE classification per protein
+## script: prot_ko_brite.py
+## usage: python prot_ko_brite.py input1 input2 output
+
+# structure input1 (i.e. emapper output with one KO per line)
+BJCDHPDN_10407  K03111
+BJCDHPDN_10409  -
+BJCDHPDN_10410  -
+BJCDHPDN_10411  K03427
+BJCDHPDN_10412  K01154
+
+# structure input2 (i.e. output from previous script)
+K03530 09182 Protein families: genetic information processing
+K03530 03032 DNA replication proteins
+K03530 03036 Chromosome and associated proteins
+K03530 03400 DNA repair and recombination proteins
+
+
+
+
+##  match coverage protein and BRITE
+## script: prot_kos_brites_cov.py
+## usage: python prot_kos_brites_cov.py input1 input2 output
+
+# structure input1
+FBKMMLCL_00020 K03811 Protein_families:_signaling_and_cellular_processes
+FBKMMLCL_00020 K03811 Transporters
+FBKMMLCL_00033 K03530 Chromosome_and_associated_proteins
+FBKMMLCL_00033 K03530 DNA_repair_and_recombination_proteins
+
+# structure input2
+25.25503        NODE_1  405     851     FBKMMLCL_00001  48.6094
+17.42407        NODE_1  864     1403    FBKMMLCL_00002  33.5368
+29.26515        NODE_1  1414    1677    FBKMMLCL_00003  56.3279
+
+
+
+## sum coverage per BRITE
+## script: sum_columns.py
+## usage: python sum_columns.py input1 output
+
+# structure input1 (i.e. output from previous script)
+10.76056        10847.2 DKNLBMCP_110069 K07378  Cell_adhesion_molecules
+10.76056        10847.2 DKNLBMCP_110069 K07378  Environmental_Information_Processing
+10.76056        10847.2 DKNLBMCP_110069 K07378  Membrane_trafficking
+
+
+
+
+## Enrichment analysis in R (Wilcoxon rank-sum test and enrichment
+
+library(dplyr)
+library(stats)
+library(tidyr)
+library(ggplot2)
+
+perform_brite_enrichment <- function(data, coverage_column = "cov_RPM") {
+  # First, identify types with multiple samples
+  valid_types <- data %>%
+    group_by(type) %>%
+    summarise(sample_count = n_distinct(sample)) %>%
+    filter(sample_count > 1) %>%
+    pull(type)
+  
+  # Filter data to include only valid types
+  filtered_data <- data %>%
+    filter(type %in% valid_types)
+  
+  # Initialize results list
+  all_results <- list()
+  
+  # For each type
+  for (current_type in valid_types) {
+    # Get data for current type
+    type_data <- filtered_data %>%
+      filter(type == current_type)
+    
+    # For each BRITE category
+    brite_results <- data.frame()
+    
+    for (brite_cat in unique(type_data$BRITE)) {
+      # Compare this type's coverage for this BRITE vs. other types
+      brite_in_type <- type_data[[coverage_column]][type_data$BRITE == brite_cat]
+      brite_in_others <- filtered_data[[coverage_column]][
+        filtered_data$type != current_type & 
+          filtered_data$BRITE == brite_cat
+      ]
+      
+      # Perform Wilcoxon test if we have enough data
+      if (length(brite_in_type) >= 3 && length(brite_in_others) >= 3) {
+        test_result <- wilcox.test(brite_in_type, brite_in_others, 
+                                   alternative = "greater")
+        
+        # Calculate statistics
+        fold_change <- mean(brite_in_type) / mean(brite_in_others)
+        
+        brite_results <- rbind(brite_results, data.frame(
+          type = current_type,
+          BRITE = brite_cat,
+          p_value = test_result$p.value,
+          fold_change = fold_change,
+          mean_coverage_type = mean(brite_in_type),
+          mean_coverage_others = mean(brite_in_others),
+          n_samples_type = length(unique(type_data$sample[type_data$BRITE == brite_cat])),
+          n_samples_others = length(unique(filtered_data$sample[
+            filtered_data$type != current_type & 
+              filtered_data$BRITE == brite_cat
+          ]))
+        ))
+      }
+    }
+    
+    # Adjust p-values if we have results
+    if (nrow(brite_results) > 0) {
+      brite_results$adjusted_p <- p.adjust(brite_results$p_value, method = "BH")
+      brite_results <- brite_results %>%
+        arrange(adjusted_p, p_value)
+      
+      all_results[[current_type]] <- brite_results
+    }
+  }
+  
+  return(all_results)
+}
+
+
+print_significant_results <- function(results, alpha = 0.05, output_file = NULL) {
+  # Create a connection to the output file if specified
+  if (!is.null(output_file)) {
+    file_conn <- file(output_file, "w")
+    sink(file_conn)
+  }
+  
+  # Print header
+  cat("BRITE Enrichment Analysis Results\n")
+  cat("================================\n\n")
+  
+  for (type in names(results)) {
+    cat("\nSignificant BRITE enrichments for", type, "samples:\n")
+    cat("------------------------------------------------\n")
+    significant <- results[[type]] %>%
+      filter(adjusted_p < alpha) %>%
+      arrange(adjusted_p)
+    
+    if (nrow(significant) > 0) {
+      print(significant %>% 
+              select(BRITE, adjusted_p, fold_change, 
+                     mean_coverage_type, mean_coverage_others))
+    } else {
+      cat("No significant enrichments found\n")
+    }
+    cat("\n")
+  }
+  
+  # Close the file connection if it was opened
+  if (!is.null(output_file)) {
+    sink()
+    close(file_conn)
+    cat(sprintf("Results have been written to: %s\n", output_file))
+  }
+}
+
+data <- read.csv("cov_perBRITE_allsamples.csv")
+results <- perform_brite_enrichment(data, coverage_column = "cov_RPM")
+print_significant_results(results, output_file = "brite_enrichment_results.txt")

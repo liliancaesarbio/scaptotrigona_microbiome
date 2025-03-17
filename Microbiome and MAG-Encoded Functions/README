@@ -1,4 +1,4 @@
-
+### USAGE OF SCRIPTS (contains command for enrichment analysis in R at the end onf this README)
 
 
 
@@ -65,7 +65,7 @@ NODE_16852
 NODE_17162
 NODE_19770
 
-# structure input2 (i.e. off)
+# structure input2 (i.e. gff)
 NODE_3  Prodigal:002006 CDS     34930   35112   .       +       0       ID=BJCDHPDN_00515;inference=ab initio prediction:Prodigal:002006;locus_tag=BJCDHPDN_00515;product=hypothetical protein
 
 
